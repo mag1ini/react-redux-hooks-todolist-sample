@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addTodoAC } from "./store/todo/actions";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -43,10 +41,4 @@ class AddTodo extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addTodo: todo => dispatch(addTodoAC(todo))
-});
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddTodo);
+export default AddTodo;
