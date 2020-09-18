@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 
 class TodoListContainer extends React.Component {
   render() {
-    const { addTodo, items } = this.props;
+    const { addTodo, items, newTodoText } = this.props;
     return (
       <>
-        <AddTodo addTodo={addTodo} />
+        <AddTodo addTodo={addTodo} newTodoText={newTodoText} />
         <TodoList items={items} />
       </>
     );

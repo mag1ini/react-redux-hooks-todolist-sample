@@ -13,8 +13,8 @@ const NamedInput = ({ name, value, onChange, isValid }) => {
   );
 };
 
-const AddTodo = ({ addTodo }) => {
-  const [newTodo, setNewTodo] = useState("");
+const AddTodo = ({ addTodo, newTodoText }) => {
+  const [newTodo, setNewTodo] = useState(newTodoText || "");
 
   const onChange = (event) => {
     event.preventDefault();
