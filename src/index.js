@@ -5,11 +5,11 @@ import { createStore, applyMiddleware } from "redux";
 import mainReducer from "./store/mainReducer";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import 
+import thunk from "redux-thunk";
 
 import App from "./App";
 
-const store = createStore(mainReducer, applyMiddleware());
+const store = createStore(mainReducer, applyMiddleware(thunk));
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
