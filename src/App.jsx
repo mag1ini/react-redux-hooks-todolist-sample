@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, useParams } from "react-router";
+import { Switch, Route, useParams, useHistory, Redirect } from "react-router";
 import TodoPage from "./TodoPage";
 import { Link } from "react-router-dom";
 
@@ -18,13 +18,21 @@ export const App = () => {
         <Route path="/user/:userId/chat/:chatId" component={User}></Route>
         <Route exact path="/hello" component={Hello}></Route>
       </Switch>
+      <History />
     </>
   );
 };
 const History = () => {
+  let history = useHistory();
   return (
     <div>
-      <Link to="/user/15/chat/44">To Users</Link>
+      <button onClick={() => history.goBack()}>Prev</button>
+      <button onClick={() => history.goForward()}>Next</button>
+
+      {/* <button onClick={() => history.go(-1)}>Prev</button>
+      <button onClick={() => history.go(1)}>Next</button> */}
+
+      <Redirect to="/user/0/chat/0">To Users</Redirect>
     </div>
   );
 };
