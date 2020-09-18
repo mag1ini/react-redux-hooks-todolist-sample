@@ -6,12 +6,24 @@ export const addTodoAC = (todo) => ({
   todo: todo.title
 });
 
-export const createTodo = async (dispatch, todo) => {
-  try {
-    const response = await PostTodo(todo);
+// export const createTodo1 = async (dispatch, todo) => {
+//   try {
+//     const response = await PostTodo(todo);
 
-    dispatch(addTodoAC(response));
-  } catch (e) {
-    //this.props.addTodo(todo)
-  }
-};
+//     dispatch(addTodoAC(response));
+//   } catch (e) {
+//     //this.props.addTodo(todo)
+//   }
+// };
+
+export function createTodo(todo) {
+  return async function (dispatch) {
+    try {
+      const response = await PostTodo(todo);
+
+      dispatch(addTodoAC(response));
+    } catch (e) {
+      //this.props.addTodo(todo)
+    }
+  };
+}
