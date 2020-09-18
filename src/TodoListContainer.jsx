@@ -1,8 +1,8 @@
 import React from "react";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
-import { connect } from "react-redux";
 import { addTodoAC } from "./store/todo/actions";
+import { connect } from "react-redux";
 
 class TodoListContainer extends React.Component {
   render() {
@@ -16,15 +16,10 @@ class TodoListContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   items: state.todo.todos
 });
-
-const mapDispatchToProps = dispatch => ({
-  addTodo: todo => dispatch(addTodoAC(todo))
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (todo) => dispatch(addTodoAC(todo))
 });
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);

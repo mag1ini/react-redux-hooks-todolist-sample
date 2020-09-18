@@ -1,44 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 
-class AddTodo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newTodo: ""
-    };
-  }
+const NamedInput = ({ name, value, onChange, isValid }) => {
+  return (
+    <input
+      name={name}
+      type="text"
+      placeholder="new todo"
+      value={value}
+      onChange={onChange}
+      style={{ borderColor: isValid ? "inHerit" : "red" }}
+    />
+  );
+};
 
-  onChange = event => {
+const AddTodo = ({ addTodo }) => {
+  const [newTodo, setNewTodo] = useState("");
+
+  const onChange = (event) => {
     event.preventDefault();
     let inputText = event.target.value;
-    this.setState({ newTodo: inputText });
+    setNewTodo(inputText);
   };
 
-  onSubmitTodo = () => {
-    const { newTodo } = this.state;
-    const { addTodo } = this.props;
+  const onSubmitTodo = () => {
     addTodo(newTodo);
-    this.setState({ newTodo: "" });
+    setNewTodo("");
   };
 
-  render() {
-    const { newTodo } = this.state;
-    const isValid = newTodo ? "valid" : "invalid";
+  const isValid = !!newTodo;
+  const validationText = isValid ? "valid" : "invalid";
 
-    return (
+  return (
+    <>
       <form>
-        <label>{isValid}</label>
-        <input
-          type="text"
-          name="newTodo"
-          placeholder="new todo"
+        <NamedInput
+          name="new todo"
           value={newTodo}
-          onChange={this.onChange}
+          onChange={onChange}
+          isValid={isValid}
         />
-        <input type="button" value="AddTodo" onClick={this.onSubmitTodo} />
+        <input type="button" value="AddTodo" onClick={onSubmitTodo} />
       </form>
-    );
-  }
-}
+      <label>{validationText}</label>
+    </>
+  );
+};
 
 export default AddTodo;
