@@ -13,12 +13,12 @@ export const App = () => {
       <Switch>
         <Route path="/todo/:newTodoText?">
           <TodoPage />
-          <Link to="/user/15/chat/44">To Users</Link>
+          {/* <Link to="/user/15/chat/44">To Users</Link> */}
         </Route>
         <Route path="/user/:userId/chat/:chatId" component={User}></Route>
         <Route exact path="/hello" component={Hello}></Route>
       </Switch>
-      <History />
+      {/* <History /> */}
     </>
   );
 };
@@ -31,8 +31,8 @@ const History = () => {
 
       {/* <button onClick={() => history.go(-1)}>Prev</button>
       <button onClick={() => history.go(1)}>Next</button> */}
-
-      <Redirect to="/user/0/chat/0">To Users</Redirect>
+      {/* 
+      <Redirect to="/user/0/chat/0">To Users</Redirect> */}
     </div>
   );
 };

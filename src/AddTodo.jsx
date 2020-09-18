@@ -13,7 +13,7 @@ const NamedInput = ({ name, value, onChange, isValid }) => {
   );
 };
 
-const AddTodo = ({ addTodo, newTodoText }) => {
+const AddTodo = ({ addTodo, newTodoText, dispatch }) => {
   const [newTodo, setNewTodo] = useState(newTodoText || "");
 
   const onChange = (event) => {
@@ -23,7 +23,7 @@ const AddTodo = ({ addTodo, newTodoText }) => {
   };
 
   const onSubmitTodo = () => {
-    addTodo(newTodo);
+    addTodo(dispatch, newTodo);
     setNewTodo("");
   };
 
