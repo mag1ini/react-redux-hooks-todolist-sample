@@ -1,6 +1,12 @@
 import React from "react";
+import TodoStatus from "./TodoStatus";
 
-const TodoItem = ({ text, isActive }) => <li>{text}</li>;
+const TodoItem = ({ text, isActive }) => (
+  <li>
+    <label>{text}</label>
+    <TodoStatus />
+  </li>
+);
 
 const TodoList = ({ items }) =>
   items && items.length ? (
