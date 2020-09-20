@@ -8,3 +8,19 @@ export async function PostTodo(title) {
     };
   }
 }
+
+export async function postTodo(todo) {
+  const request = await fetch("localhost", {
+    method: "Post",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ title: todo })
+  });
+  return await request.json();
+}
+
+export async function getTodos() {
+  const request = await fetch("localhost");
+  return await request.json();
+}
